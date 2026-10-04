@@ -1,0 +1,119 @@
+default: &default
+  theme_color: "blue"
+  tone: "practical"
+  primary_objection: "Es de buena calidad?"
+  trust_signals:
+    - "Pago contra entrega"
+    - "Envio a todo Ecuador"
+  price_range_min: 10.0
+  price_range_max: 60.0
+  typical_margin_pct: 40.0
+  min_clean_images: 2
+  prefer_lifestyle_images: false
+  show_comparison_table: true
+  show_reviews_section: true
+  show_specs_table: false
+  show_faq: true
+
+categories:
+  cocina:
+    <<: *default
+    display_name: "Cocina y Utensilios"
+    theme_color: "orange"
+    tone: "practical"
+    primary_objection: "Es seguro para alimentos?"
+    trust_signals:
+      - "Material apto para alimentos"
+      - "Libre de BPA"
+      - "Pago contra entrega"
+    price_range_min: 8.0
+    price_range_max: 45.0
+    typical_margin_pct: 45.0
+    prefer_lifestyle_images: true
+
+  hogar:
+    <<: *default
+    display_name: "Hogar y Limpieza"
+    theme_color: "pink"
+    tone: "practical"
+    primary_objection: "Realmente funciona?"
+    trust_signals:
+      - "Formula segura para el hogar"
+      - "Miles de hogares lo usan"
+      - "Pago contra entrega"
+    price_range_min: 8.0
+    price_range_max: 50.0
+    typical_margin_pct: 50.0
+
+  belleza:
+    <<: *default
+    display_name: "Belleza y Cuidado Personal"
+    theme_color: "pink"
+    tone: "aspirational"
+    primary_objection: "Realmente funciona en mi tipo de piel/cabello?"
+    trust_signals:
+      - "Ingredientes seguros"
+      - "Resultados visibles"
+      - "Envio discreto"
+    price_range_min: 10.0
+    price_range_max: 40.0
+    typical_margin_pct: 55.0
+    prefer_lifestyle_images: true
+
+  salud:
+    <<: *default
+    display_name: "Salud y Bienestar"
+    theme_color: "green"
+    tone: "technical"
+    primary_objection: "Es seguro? Tiene registro sanitario?"
+    trust_signals:
+      - "Uso externo / topico"
+      - "Ingredientes naturales"
+      - "Satisfaccion garantizada"
+    price_range_min: 10.0
+    price_range_max: 35.0
+    typical_margin_pct: 50.0
+    show_specs_table: true
+
+  tecnologia:
+    <<: *default
+    display_name: "Tecnologia y Accesorios"
+    theme_color: "blue"
+    tone: "technical"
+    primary_objection: "Es compatible con mi dispositivo?"
+    trust_signals:
+      - "Compatibilidad universal"
+      - "Garantia de satisfaccion"
+      - "Soporte tecnico por WhatsApp"
+    price_range_min: 15.0
+    price_range_max: 80.0
+    typical_margin_pct: 40.0
+    show_specs_table: true
+
+  seguridad:
+    <<: *default
+    display_name: "Seguridad y Defensa Personal"
+    theme_color: "blue"
+    tone: "practical"
+    primary_objection: "Es legal en Ecuador?"
+    trust_signals:
+      - "Producto legal en Ecuador"
+      - "Envio discreto"
+      - "Pago contra entrega"
+    price_range_min: 12.0
+    price_range_max: 50.0
+    typical_margin_pct: 45.0
+
+  defensa personal:
+    <<: *default
+    display_name: "Defensa Personal"
+    theme_color: "blue"
+    tone: "practical"
+    primary_objection: "Es legal en Ecuador?"
+    trust_signals:
+      - "Producto legal en Ecuador"
+      - "Envio discreto"
+      - "Pago contra entrega"
+    price_range_min: 12.0
+    price_range_max: 50.0
+    typical_margin_pct: 45.0

@@ -1,0 +1,1 @@
+"""TiendaDropiEc test suite."""

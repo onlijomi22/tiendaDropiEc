@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/
+
+# Debug artifacts
+debug_payload.json
+*_debug.html
+*_debug.png
+dropi_*.png
+dropi_*.html
+login_*.png
+ml_dump.html
+products_*_response.json
+oportunidades_voluminosas.md
+
+# Node
+node_modules/
+.next/
+.turbo/
+
+# Frontend local data (regenerable)
+frontend/src/data/orders.json
+frontend/src/data/enriched/
+frontend/.env.local
+
+# Data files (regenerable)
+data/analyzed_products.txt
+data/product_scores.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
