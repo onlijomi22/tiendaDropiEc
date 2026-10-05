@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: {{WIDTH}}px;
+    height: {{HEIGHT}}px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: {{PADDING}}px;
+  }
+
+  /* Accent glow */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, {{ACCENT_COLOR}}15 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .headline {
+    font-size: {{HEADLINE_SIZE}}px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .headline em {
+    color: {{ACCENT_COLOR}};
+    font-style: normal;
+  }
+
+  .subheadline {
+    font-size: {{SUB_SIZE}}px;
+    color: #a0a0a0;
+    text-align: center;
+    margin-bottom: {{SUB_MARGIN}}px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+  }
+
+  .product-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+  }
+
+  .product-img {
+    max-height: 100%;
+    max-width: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+  }
+
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: {{BENEFIT_GAP}}px;
+    margin-bottom: {{BENEFIT_MARGIN}}px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: {{BENEFIT_SIZE}}px;
+    color: #e0e0e0;
+  }
+
+  .benefit-check {
+    width: {{CHECK_SIZE}}px;
+    height: {{CHECK_SIZE}}px;
+    background: {{ACCENT_COLOR}};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: {{CHECK_FONT}}px;
+    flex-shrink: 0;
+  }
+
+  .bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .price-badge {
+    background: linear-gradient(135deg, {{ACCENT_COLOR}}, {{ACCENT_DARK}});
+    padding: {{PRICE_PAD_V}}px {{PRICE_PAD_H}}px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-label {
+    font-size: {{PRICE_LABEL_SIZE}}px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+
+  .price-value {
+    font-size: {{PRICE_SIZE}}px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+
+  .trust-signals {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .trust-item {
+    font-size: {{TRUST_SIZE}}px;
+    color: #b0b0b0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .trust-icon {
+    color: {{ACCENT_COLOR}};
+  }
+
+  .badge-top {
+    position: absolute;
+    top: {{PADDING}}px;
+    right: {{PADDING}}px;
+    background: {{ACCENT_COLOR}};
+    color: white;
+    font-size: {{BADGE_SIZE}}px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge-top">Envio Gratis 🇪🇨</div>
+
+  <h1 class="headline">{{HEADLINE}}</h1>
+  <p class="subheadline">{{SUBHEADLINE}}</p>
+
+  <div class="product-area">
+    <img class="product-img" src="{{PRODUCT_IMAGE}}" alt="Producto">
+  </div>
+
+  <div class="benefits">
+    {{BENEFITS_HTML}}
+  </div>
+
+  <div class="bottom-bar">
+    <div class="price-badge">
+      <span class="price-label">Precio hoy:</span>
+      <span class="price-value">${{PRICE}}</span>
+    </div>
+    <div class="trust-signals">
+      {{TRUST_HTML}}
+    </div>
+  </div>
+</div>
+</body>
+</html>
