@@ -240,5 +240,12 @@ class SmartScoringUseCase:
         if self._repo:
             await self._repo.save_score(score)
 
+        # Register as analyzed so it won't be re-scored
+        from pathlib import Path
+        memory_file = Path("data/analyzed_products.txt")
+        memory_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(memory_file, "a", encoding="utf-8") as f:
+            f.write(f"{product.id}\n")
+
         logger.info(f"[SmartScoring] {product.name}: {total}/100 -> {rec.value}")
         return SmartScoreResult(product=product, score=score, context=ctx, breakdown=breakdown)

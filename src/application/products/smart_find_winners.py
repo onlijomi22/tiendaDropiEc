@@ -65,22 +65,35 @@ class SmartFindWinnersUseCase:
         output = SmartFindWinnersOutput(total_scanned=len(products))
 
         # Phase 1: Fast filter
+        from pathlib import Path
+        from src.domain.business_rules import ESTIMATED_CPA_USD, ESTIMATED_SHIPPING_COST_USD
+
         candidates: list[Product] = []
+        skipped_ids: list[str] = []
         for p in products:
             margin = p.margin_pct
             if margin < MIN_MARGIN_PCT:
                 output.skip_fast += 1
+                skipped_ids.append(p.id)
                 continue
             if p.stock < MIN_STOCK_FOR_BUY:
                 output.skip_fast += 1
+                skipped_ids.append(p.id)
                 continue
-            # Net profit check (must be positive)
-            from src.domain.business_rules import ESTIMATED_CPA_USD, ESTIMATED_SHIPPING_COST_USD
             net = p.suggested_price - p.dropi_price - ESTIMATED_CPA_USD - ESTIMATED_SHIPPING_COST_USD
             if net <= 0:
                 output.skip_fast += 1
+                skipped_ids.append(p.id)
                 continue
             candidates.append(p)
+
+        # Register skipped products so they don't reappear
+        if skipped_ids:
+            memory_file = Path("data/analyzed_products.txt")
+            memory_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(memory_file, "a", encoding="utf-8") as f:
+                for pid in skipped_ids:
+                    f.write(f"{pid}\n")
 
         # Sort by margin descending, take top N for deep scoring
         candidates.sort(key=lambda p: p.margin_pct, reverse=True)
